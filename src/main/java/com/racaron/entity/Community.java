@@ -3,6 +3,7 @@ package com.racaron.entity;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,11 +24,11 @@ public class Community implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer communityId;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CategoriesDetailsID")
 	private CategoriesDetails categoriesDetails;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PostID")
 	private Post post;
 

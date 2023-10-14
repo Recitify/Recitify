@@ -3,6 +3,8 @@ package com.racaron.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class Categories implements Serializable{
 	@Column(name = "Images")
 	private String images;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "categories")
 	private List<CategoriesDetails> categoriesDetails;
 

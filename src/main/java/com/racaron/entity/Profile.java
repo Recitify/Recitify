@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class Profile implements Serializable{
 	private String images;
 	private LocalDate birthday;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "profile")
 	private List<Account> accounts;
 

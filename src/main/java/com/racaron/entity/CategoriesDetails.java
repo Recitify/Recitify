@@ -3,7 +3,10 @@ package com.racaron.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,10 +28,11 @@ public class CategoriesDetails implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoriesDetailsId;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CategoriesID")
 	private Categories categories;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoriesDetails")
 	private List<Community> communities;
 
